@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import styled from "styled-components";
+import React, { useState } from "react";
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
 
-function App() {
-  const [contents, setContents] = useState([]);
-  const [new_, setNew] = useState([]);
+import StartPage from "./pages/StartPage";
+import ResultPage from "./pages/ResultPage";
 
-  const PostNlp = (contents, new_) => {
-    const data = {
-      contents: contents,
-      text: new_,
-    };
+function App() {
+  const navigate = useNavigate();
+
+  const [result, setResult] = useState({});
+
+  const ReqeustNlp = () => {
+    const data = JSON.parse(window.localStorage.getItem("data"));
 
     fetch("http://127.0.0.1:5000/api/nlp", {
       method: "POST",
@@ -22,35 +22,18 @@ function App() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        console.log("분석 결과", data);
+        setResult(data);
+        navigate("/result");
       });
   };
 
   return (
-    <div>
-      <main>
-        <h1>TF-IDF</h1>
-        <h2>문장 유사도 구하기</h2>
-        <h1>비교할 후보 문장들을 넣어주세요</h1>
-        <ul class="list">
-          <li class="list__item">Follow CodeDesignerWorld</li>
-          <li class="list__item">Visit www.rareprogrammer.com</li>
-          <li class="list__item">Like, Comment & share Post</li>
-          <li class="list__item">Visit Again</li>
-        </ul>
-
-        <div class="add">
-          <div class="add__item">+</div>
-        </div>
-      </main>
-
-      <main></main>
-    </div>
+    <Routes>
+      <Route path="/" element={<StartPage ReqeustNlp={ReqeustNlp} />} />
+      <Route path="/result" element={<ResultPage result={result} />} />
+    </Routes>
   );
 }
 
 export default App;
-
-const BackGround = styled.div`
-  background-color: gray;
-`;
