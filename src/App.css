@@ -33,6 +33,7 @@ body {
 }
 
 .swiper {
+  margin-top: 40px;
   height: 600px;
   width: 350px;
 
@@ -85,6 +86,8 @@ input {
   position: absolute;
   left: 24px;
   bottom: 35px;
+
+  width: 60%;
 }
 
 input::placeholder {
