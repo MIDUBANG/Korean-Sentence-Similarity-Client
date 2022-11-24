@@ -1,5 +1,4 @@
 import React from "react";
-import { TiDeleteOutline, TiArrowForwardOutline } from "react-icons/ti";
 
 import styled from "styled-components";
 
@@ -18,7 +17,7 @@ const ResultPage = ({ result }) => {
           {result.map((con, index) => {
             if (index !== result.length - 1) {
               return (
-                <li className="list__item">
+                <li className="list__item" key={index}>
                   <div style={{ display: "flex" }}>
                     <p className="num">{index + 1}. </p>
                     <p>{con.content}</p>
