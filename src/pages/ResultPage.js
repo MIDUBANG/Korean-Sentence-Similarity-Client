@@ -15,21 +15,16 @@ const ResultPage = ({ result }) => {
         <h1 className="discription">분석 결과</h1>
         <ul className="list">
           {result.map((con, index) => {
-            if (index !== result.length - 1) {
-              return (
-                <li className="list__item" key={index}>
-                  <div style={{ display: "flex" }}>
-                    <p className="num">{index + 1}. </p>
-                    <p>{con.content}</p>
-                  </div>
+            return (
+              <li className="list__item" key={index}>
+                <div style={{ display: "flex" }}>
+                  <p className="num">{index + 1}. </p>
+                  <p>{con.content}</p>
+                </div>
 
-                  <p className="distance">
-                    {" "}
-                    ( 거리 : {con.distance.toString().substr(0, 5)} )
-                  </p>
-                </li>
-              );
-            }
+                <p className="distance">( 거리 : {con.distance} )</p>
+              </li>
+            );
           })}
         </ul>
       </main>
