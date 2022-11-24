@@ -76,6 +76,9 @@ main {
   transform: translateY(-5px);
 }
 
+.ResultPage {
+  margin-left: 0;
+}
 input {
   background-color: transparent;
   border: none;

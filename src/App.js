@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
-import "./App.css";
 
 import StartPage from "./pages/StartPage";
 import ResultPage from "./pages/ResultPage";

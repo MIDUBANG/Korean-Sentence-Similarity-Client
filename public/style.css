@@ -3,6 +3,25 @@
    License: none (public domain)
 */
 
+body {
+  height: 100%;
+
+  background: var(--bgColor);
+
+  margin: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+html {
+  height: 100%;
+}
+
 html,
 body,
 div,
