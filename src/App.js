@@ -12,7 +12,7 @@ function App() {
   const ReqeustNlp = () => {
     const data = JSON.parse(window.localStorage.getItem("data"));
 
-    fetch("http://127.0.0.1:5000/api/nlp", {
+    fetch("http://107.21.71.115:5000/api/nlp", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

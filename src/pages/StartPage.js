@@ -8,6 +8,8 @@ import "swiper/css/pagination";
 
 import styled from "styled-components";
 
+import { Oval } from "react-loader-spinner";
+
 const StartPage = ({ setRequest, ReqeustNlp, request }) => {
   const [contents, setContents] = useState([
     {
@@ -52,6 +54,10 @@ const StartPage = ({ setRequest, ReqeustNlp, request }) => {
 
   // 요청
   const Request = () => {
+    setIsLoading(true);
+
+    console.log("요청");
+
     const data = {
       contents: contents.map((c) => {
         return c.text;
@@ -108,6 +114,26 @@ const StartPage = ({ setRequest, ReqeustNlp, request }) => {
             <ul className="list">
               <li className="list__item">{target}</li>
             </ul>
+            {isLoading ? (
+              <div className="loading-box">
+                <Oval
+                  className="loading"
+                  height={80}
+                  width={80}
+                  color="#4E75FF"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                  visible={true}
+                  ariaLabel="oval-loading"
+                  secondaryColor="#7AD3FF"
+                  strokeWidth={2}
+                  strokeWidthSecondary={2}
+                />
+                <h1>분석 중...</h1>
+              </div>
+            ) : (
+              <></>
+            )}
 
             <input value={target} onChange={(e) => setTarget(e.target.value)} />
 
@@ -126,6 +152,14 @@ const StartPage = ({ setRequest, ReqeustNlp, request }) => {
 export default StartPage;
 
 const Wrapper = styled.div`
+  .loading-box {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
   .swiper {
     margin-top: 40px;
     height: 600px;
