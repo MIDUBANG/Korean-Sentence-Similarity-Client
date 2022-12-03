@@ -98,11 +98,13 @@ const Wrapper = styled.div`
   /*LIST*/
   .list {
     height: 355px;
-
     margin: 0;
     padding: 0;
-
     overflow: auto;
+  }
+
+  .list::-webkit-scrollbar {
+    display: none;
   }
 
   .list__item {

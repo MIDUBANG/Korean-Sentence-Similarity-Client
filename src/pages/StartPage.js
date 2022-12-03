@@ -10,7 +10,7 @@ import styled from "styled-components";
 
 import { Oval } from "react-loader-spinner";
 
-const StartPage = ({ setRequest, ReqeustNlp, request }) => {
+const StartPage = ({ ReqeustNlp, isLoading, setIsLoading, fail }) => {
   const [contents, setContents] = useState([
     {
       id: 1,
@@ -30,8 +30,6 @@ const StartPage = ({ setRequest, ReqeustNlp, request }) => {
   const [target, setTarget] = useState("비교할 대상 문장");
   const [newContent, setNewContent] = useState("");
   const nextId = useRef(4);
-
-  const [isLoading, setIsLoading] = useState(false);
 
   const AddContent = () => {
     if (newContent !== "") {
@@ -130,6 +128,17 @@ const StartPage = ({ setRequest, ReqeustNlp, request }) => {
                   strokeWidthSecondary={2}
                 />
                 <h1>분석 중...</h1>
+                <h1>
+                  네트워크 품질에 따라 <br /> 시간이 소요될 수 있습니다.
+                </h1>
+              </div>
+            ) : (
+              <></>
+            )}
+
+            {fail ? (
+              <div style={{ color: "white", fontWeight: "200" }}>
+                네트워크 오류 //. 다시 시도해주세요
               </div>
             ) : (
               <></>

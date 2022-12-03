@@ -8,11 +8,15 @@ function App() {
   const navigate = useNavigate();
 
   const [result, setResult] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const [fail, setFail] = useState(false);
 
   const ReqeustNlp = () => {
     const data = JSON.parse(window.localStorage.getItem("data"));
 
-    fetch("http://107.21.71.115:5000/api/nlp", {
+    setFail(false);
+
+    fetch("http://127.0.0.1:5000/api/nlp", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -25,12 +29,27 @@ function App() {
         console.log("분석 결과", data);
         setResult(data);
         navigate("/result");
+      })
+      .catch((err) => {
+        console.log(err);
+        setIsLoading(false);
+        setFail(true);
       });
   };
 
   return (
     <Routes>
-      <Route path="/" element={<StartPage ReqeustNlp={ReqeustNlp} />} />
+      <Route
+        path="/"
+        element={
+          <StartPage
+            ReqeustNlp={ReqeustNlp}
+            isLoading={isLoading}
+            setIsLoading={setIsLoading}
+            fail={fail}
+          />
+        }
+      />
       <Route path="/result" element={<ResultPage result={result} />} />
     </Routes>
   );
