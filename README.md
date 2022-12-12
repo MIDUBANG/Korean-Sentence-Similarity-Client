@@ -7,6 +7,7 @@ Konlpy와 TF-IDF를 이용해 한국어 문장 사이의 유사도를 계산해�
 
 ### URL 
 https://midubangtfidf.netlify.app/
+(aws 과금 문제로 12/12 이후부터 서버 사용 불가능합니다.)
 
 <br>
 
